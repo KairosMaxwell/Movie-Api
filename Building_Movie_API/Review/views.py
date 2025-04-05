@@ -31,14 +31,19 @@
 #
 #
 
-
+from rest_framework import permissions, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, permissions
 from .models import Review
-from serializer import ReviewSerializer
+from serializer_file import ReviewSerializer
 
 class ReviewViewSet(viewsets.ModelViewSet):
     queryset = Review.objects.all().order_by('-created_at')
     serializer_class = ReviewSerializer
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+    search_fields = ['movie_title']  # Allow search by movie title
+    filterset_fields = ['movie_title']  # Allow filtering by movie title
+    ordering_fields = ['rating', 'created_at']
     permission_classes = [permissions.IsAuthenticated]  # Require authentication
 
     def perform_create(self, serializer):

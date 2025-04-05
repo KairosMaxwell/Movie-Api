@@ -33,6 +33,7 @@ AUTH_USER_MODEL = 'movie_account.CustomUser'
 # Application definition
 
 INSTALLED_APPS = [
+    # 'django_filters'
     'movie_account.apps.MovieAccountConfig',
     'Review.apps.ReviewConfig',
     'rest_framework',
@@ -94,6 +95,9 @@ REST_FRAMEWORK = {
     # 'DEFAULT_AUTHENTICATION_CLASSES': (
     #     'rest_framework.authentication.TokenAuthentication',
     # ),
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
 
 }
 

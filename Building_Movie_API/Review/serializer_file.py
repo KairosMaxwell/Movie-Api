@@ -24,23 +24,7 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-from rest_framework import serializers
+# from rest_framework import serializers
 
 # from movie_account.models import Review
 
