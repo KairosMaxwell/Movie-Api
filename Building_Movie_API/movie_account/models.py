@@ -9,9 +9,6 @@ from movie_account.usermanager import ModelAdmin
 
 # Create your models here.
 
-
-
-
     # profile_picture = models.ImageField(upload_to="profile_pictures", null=True, blank=True)
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=50, unique=True)

@@ -33,7 +33,7 @@ AUTH_USER_MODEL = 'movie_account.CustomUser'
 # Application definition
 
 INSTALLED_APPS = [
-    # 'django_filters'
+
     'movie_account.apps.MovieAccountConfig',
     'Review.apps.ReviewConfig',
     'rest_framework',
@@ -84,8 +84,21 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',  # or sqlite3
+#         'NAME': 'postgres@localhost',
+#         'USER': 'postgres',
+#         'PASSWORD': 'database$$',
+#         'HOST': 'localhost',
+#         'PORT': '5432',  # Adjust for PostgreSQL
+#     }
+# }
 
 
 

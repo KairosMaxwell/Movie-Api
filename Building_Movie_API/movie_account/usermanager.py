@@ -16,7 +16,7 @@ class ModelAdmin(BaseUserManager):
 
 
     def create_superuser(self,username, email, password=None, **extra_fields):
-        user = self.create_user(username, email, password)
+        user = self.create_user(username, email)
         extra_fields.setdefault("is_staff", True)
         extra_fields.setdefault("is_superuser", True)
         user.is_staff = True

@@ -3,6 +3,15 @@ from movie_account import views
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
+from rest_framework.response import Response
+from rest_framework import status
+
+class CustomErrorHandlingMixin:
+    def handle_exception(self, exc):
+        if isinstance(exc, ValueError):
+            return Response({"error": str(exc)}, status=status.HTTP_400_BAD_REQUEST)
+        return super().handle_exception(exc)
+
 
 router = DefaultRouter()
 router.register(r'users', views.UserViewSet)

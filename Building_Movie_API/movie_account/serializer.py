@@ -1,10 +1,18 @@
 
 from rest_framework import serializers
 from rest_framework.authtoken.models import Token
-
 from movie_account.models import CustomUser
 
+# class UserSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = CustomUser
+#         fields = ["id", "username", "email", "password"]
+#         extra_kwargs = {"password": {"write_only": True}}
+#
 
+
+
+#
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
     class Meta:
@@ -13,10 +21,13 @@ class UserSerializer(serializers.ModelSerializer):
 
     def create(self,**validated_data):
         user =CustomUser.objects.create_user(**validated_data)
-        # user =CustomUser.objects.create_user(self.validated_data, email=self.validated_data["email"],password=self.validated_data["password"])
-        # CustomUser.objects.create_user(email=email, password=password )
         Token.objects.create(user=user)
         return user
+
+    def validate_username(self, value):
+        if CustomUser.objects.filter(username=value).exists():
+            raise serializers.ValidationError("Username already taken.")
+        return value
 
 
 
