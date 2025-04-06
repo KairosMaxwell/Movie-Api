@@ -4,19 +4,19 @@ from django.contrib.auth.models import AbstractUser, PermissionsMixin
 # from movie_account.usermanager import CustomUserManager
 from django.db import models
 
-from movie_account.usermanager import ModelAdmin
+from movie_account.usermanager import CustomUserManager
 
 
 # Create your models here.
 
     # profile_picture = models.ImageField(upload_to="profile_pictures", null=True, blank=True)
 class CustomUser(AbstractBaseUser, PermissionsMixin):
-    username = models.CharField(max_length=50, unique=True)
+    username = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
-    objects = ModelAdmin()
+    objects = CustomUserManager()
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["username"]
