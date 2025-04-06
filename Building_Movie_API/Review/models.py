@@ -23,6 +23,15 @@ from django.contrib.auth import get_user_model
 from django.utils.timezone import now
 User = get_user_model()
 
+
+class Movie(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    release_date = models.DateField()
+
+    def __str__(self):
+        return self.title
+
 class Review(models.Model):
     Movie_title = models.CharField(max_length=255)
     Review_Content = models.TextField()
@@ -31,11 +40,7 @@ class Review(models.Model):
     created_Date = models.DateField(default=now)
 
 
-    # movie_title = models.CharField(max_length=255)
-    # review_content = models.TextField()
-    # rating = models.IntegerField()
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)  # Link to User
-    # created_date = models.DateTimeField(auto_now_add=True)
+
 
     def __str__(self):
         return f"{self.Movie_title} - {self.user.username}"

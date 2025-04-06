@@ -19,8 +19,8 @@ router.register(r'users', views.UserViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path("login/",LoginView.as_view(template_name="./registration/login.html")),
+    path("login/",LoginView.as_view()),
     path("logout/",LogoutView.as_view()),
     # path("register/",views.SignUpView,name="register"),
-    path("register/", views.SignupView.as_view())
+    path("register/", views.RegisterView.as_view())
 ]

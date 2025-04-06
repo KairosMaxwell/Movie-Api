@@ -1,0 +1,11 @@
+Movie_title = models.CharField(max_length=255)
+    Review_Content = models.TextField()
+    Rating = models.IntegerField(choices=[(i, str(i)) for i in range(1, 6)])
+
+
+
+{
+  "Movie_title": 1,
+  "Review_Content": 9,
+  "Rating": "Inception was a brilliant movie with a great plot and amazing performances."
+}
